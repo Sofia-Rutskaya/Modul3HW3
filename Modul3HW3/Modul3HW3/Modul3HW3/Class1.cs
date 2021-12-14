@@ -8,9 +8,9 @@ namespace Modul3HW3
 {
     public class Class1
     {
-        public delegate void SomeDel(bool x);
+        public Action<bool> SomeDel { get; set; }
 
-        public static int Pow(int x, int y)
+        public int Pow(int x, int y)
         {
             return x * y;
         }

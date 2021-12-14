@@ -8,13 +8,9 @@ namespace Modul3HW3
 {
     public class Class2
     {
-        private NewDelegate _newDelegate;
         private static int _item;
 
-        public delegate int MyOwnDelegate(int x, int y);
-        public delegate bool NewDelegate(int x);
-
-        public static bool Result(int x)
+        public bool Result(int x)
         {
             if (_item % x == 0)
             {
@@ -26,11 +22,11 @@ namespace Modul3HW3
             }
         }
 
-        public NewDelegate Calc(int x, int y, MyOwnDelegate handle)
+        public Predicate<int> Calc(Func<int, int, int> powItem, int x, int y)
         {
-            _item = handle.Invoke(x, y);
-            _newDelegate = Result;
-            return _newDelegate;
+            _item = powItem.Invoke(x, y);
+            Predicate<int> result = Result;
+            return result;
         }
     }
 }
